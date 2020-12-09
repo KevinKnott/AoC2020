@@ -1,7 +1,7 @@
 import sys
 
 
-def calc(index):
+def calc(index, correct):
     visited = set()
     acc = 0
     # index = 0
@@ -18,7 +18,7 @@ def calc(index):
             acc += val
 
         index += 1 if ins != 'jmp' else val
-        if index == len(rules) - 1:
+        if index == len(rules) - 1 or index in correct:
             return acc
 
     return None
@@ -38,7 +38,7 @@ for value in sys.stdin.read().split("\n"):
 # for instruction that dont
 correct = set()
 for i in range(len(rules)):
-    potentials = calc(i)
+    potentials = calc(i, correct)
     if potentials is not None:
         correct.add(i)
 
@@ -70,4 +70,4 @@ while index not in visited:
     index += 1 if ins != 'jmp' else val
 
 
-print(calc(0))
+print(calc(0, set()))
