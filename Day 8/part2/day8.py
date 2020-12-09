@@ -42,8 +42,7 @@ for i in range(len(rules)):
     if potentials is not None:
         correct.add(i)
 
-print(correct)
-
+# print(correct)
 # Calculate accumulator of fixed version
 
 visited = set()
@@ -59,12 +58,12 @@ while index not in visited:
 
     if ins == 'nop' and index + val in correct:
         rules[index] = ('jmp', val)
-        print('Index', index, rules[index])
+        # print('Index', index, rules[index])
         break
 
     if ins == 'jmp' and index + 1 in correct:
         rules[index] = ('nop', val)
-        print('Index', index, rules[index])
+        # print('Index', index, rules[index])
         break
 
     index += 1 if ins != 'jmp' else val
